@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "This educational project demonstrates the use of the Page Object Model (POM) design pattern in Playwright. The website being tested is \"https://demo-bank.vercel.app/\", created by the skilled team at https://jaktestowac.pl/.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headful": "playwright test --headed",
+    "test:ui": "playwright test --ui"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Pawel-Albert/demo-bank-playwright.git"
@@ -16,6 +20,6 @@
   },
   "homepage": "https://github.com/Pawel-Albert/demo-bank-playwright#readme",
   "devDependencies": {
-    "@playwright/test": "^1.31.2"
+    "@playwright/test": "^1.32.0"
   }
 }
