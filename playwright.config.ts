@@ -22,7 +22,6 @@ export default defineConfig({
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
-  video: 'retain-on-failure',
   screenshot: 'only-on-failure',
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -39,7 +38,7 @@ export default defineConfig({
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-
+    video: 'retain-on-failure',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "retain-on-failure",
   },
