@@ -35,10 +35,13 @@ jobs:
     - name: Run Playwright tests with sharding
       run: npm run test -- --shard ${{ matrix.shard }}
 
+    - name: Set shard environment variable for artifact name
+      run: echo "SHARD_NAME=shard-${{ matrix.shard }}" | sed 's/\//-/g' >> $GITHUB_ENV
+
     - name: Upload HTML report as artifact
       if: always()
       uses: actions/upload-artifact@v2
       with:
-        name: playwright-report-${{ matrix.shard }}.replace('/', '-')
+        name: playwright-report-${{ env.SHARD_NAME }}
         path: playwright-report/
         retention-days: 1
