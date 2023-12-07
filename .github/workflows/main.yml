@@ -33,12 +33,12 @@ jobs:
       run: npx playwright install chromium
 
     - name: Run Playwright tests with sharding
-      run: npx playwright test --shard ${{ matrix.shard }}
+      run: npm run test -- --shard ${{ matrix.shard }}
 
     - name: Upload HTML report as artifact
       if: always()
       uses: actions/upload-artifact@v2
       with:
-        name: playwright-report-${{ matrix.shard }}
+        name: playwright-report-${{ matrix.shard }}.replace('/', '-')
         path: playwright-report/
         retention-days: 1
