@@ -33,14 +33,7 @@ jobs:
       run: npx playwright install chromium
 
     - name: Run Playwright tests with sharding
-      run: npx playwright test --config=playwright.config.js --shard ${{ matrix.shard }}
-
-    - name: Check if report directory exists
-      run: |
-        if [ ! -d "playwright-report" ]; then
-          echo "Report directory not found."
-          exit 1
-        fi
+      run: npm run test -- --shard ${{ matrix.shard }}
 
     - name: Set shard environment variable for artifact name
       run: echo "SHARD_NAME=shard-${{ matrix.shard }}" | sed 's/\//-/g' >> $GITHUB_ENV
